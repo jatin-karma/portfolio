@@ -44,13 +44,43 @@ function typewriter() {
 // Start typewriter after initial animation delay
 setTimeout(typewriter, 900);
 
-/* ---- Sticky Navbar ---- */
+/* ---- Sticky & Dynamic Navbar ---- */
 const navbar = document.getElementById('navbar');
+let lastScrollY = window.scrollY;
+let scrollStopTimeout;
 
 function handleScroll() {
+  const currentScrollY = window.scrollY;
+
   if (navbar) {
-    navbar.classList.toggle('scrolled', window.scrollY > 20);
+    // Sticky background toggle
+    navbar.classList.toggle('scrolled', currentScrollY > 20);
+
+    // Dynamic show/hide on scroll
+    const isMobileMenuOpen = document.getElementById('mobile-menu')?.classList.contains('open');
+    if (!isMobileMenuOpen) {
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        // Scrolling down -> hide navbar
+        navbar.classList.add('nav-hidden');
+      } else {
+        // Scrolling up -> show navbar
+        navbar.classList.remove('nav-hidden');
+      }
+    }
   }
+
+  lastScrollY = currentScrollY;
+
+  // Clear timeout while scrolling
+  clearTimeout(scrollStopTimeout);
+
+  // Set timeout to show navbar when scroll stops
+  scrollStopTimeout = setTimeout(() => {
+    if (navbar) {
+      navbar.classList.remove('nav-hidden');
+    }
+  }, 200);
+
   highlightNav();
 }
 

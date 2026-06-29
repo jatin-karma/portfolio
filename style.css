@@ -205,7 +205,11 @@ img {
   z-index: 1000;
   display: flex;
   align-items: center;
-  transition: background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+}
+
+#navbar.nav-hidden {
+  transform: translateY(-100%);
 }
 
 #navbar.scrolled {
