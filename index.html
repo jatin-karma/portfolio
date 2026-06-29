@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Main External Stylesheet -->
-  <link rel="stylesheet" href="./style.css?v=2" />
+  <link rel="stylesheet" href="./style.css?v=3" />
 </head>
 
 <body>
@@ -762,7 +762,19 @@
   </div>
 
   <!-- Main External Script -->
-  <script src="./script.js?v=2" defer></script>
+  <script src="./script.js?v=3" defer></script>
+
+  <!-- Inline fallback: guarantee counters show values even if external JS fails -->
+  <script>
+    setTimeout(function() {
+      var cgpa = document.getElementById('stat-cgpa');
+      var proj = document.getElementById('stat-projects');
+      var cert = document.getElementById('stat-certs');
+      if (cgpa && (cgpa.textContent === '0' || cgpa.textContent === '')) cgpa.textContent = '8.48';
+      if (proj && (proj.textContent === '0' || proj.textContent === '')) proj.textContent = '3+';
+      if (cert && (cert.textContent === '0' || cert.textContent === '')) cert.textContent = '5+';
+    }, 3000);
+  </script>
 
 </body>
 </html>
