@@ -158,21 +158,31 @@ function animateCounter(id, target, decimals = 0, suffix = '') {
 let countersTriggered = false;
 const aboutSection = document.getElementById('about');
 
+function triggerCounters() {
+  if (countersTriggered) return;
+  countersTriggered = true;
+  animateCounter('stat-cgpa',     8.48, 2);
+  animateCounter('stat-projects', 3,    0, '+');
+  animateCounter('stat-certs',    5,    0, '+');
+}
+
 const counterObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !countersTriggered) {
-      countersTriggered = true;
-      animateCounter('stat-cgpa',     8.48, 2);
-      animateCounter('stat-projects', 3,    0, '+');
-      animateCounter('stat-certs',    5,    0, '+');
+      triggerCounters();
       counterObserver.disconnect();
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.01, rootMargin: '0px 0px 100px 0px' });
 
 if (aboutSection) {
   counterObserver.observe(aboutSection);
 }
+
+// Fallback: if counters haven't triggered after 2s, fire them anyway
+setTimeout(() => {
+  triggerCounters();
+}, 2000);
 
 /* ---- Achievements Gallery Tabs Switcher ---- */
 window.switchGalleryTab = function(tabName) {
