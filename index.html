@@ -826,7 +826,7 @@
     }
 
     /* ============================================================
-       SECTION PLACEHOLDER (Tasks 2–6 will fill these)
+       SECTION PLACEHOLDER (Tasks 3–6 will fill these)
     ============================================================ */
     .section-placeholder {
       padding: 80px 0;
@@ -835,6 +835,263 @@
       font-family: var(--font-mono);
       font-size: 0.85rem;
       border-top: 1px solid var(--border);
+    }
+
+    /* ============================================================
+       ABOUT SECTION
+    ============================================================ */
+    #about {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    /* ---- Left: Text Content ---- */
+    .about-text-col {}
+
+    .about-intro {
+      font-size: 1.05rem;
+      color: var(--subtext);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .about-intro strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* What drives me / Exploring cards */
+    .about-highlight-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .about-highlight-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .about-highlight-card:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .about-highlight-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(108,99,255,0.18), rgba(0,212,255,0.1));
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .about-highlight-body {}
+
+    .about-highlight-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .about-highlight-desc {
+      font-size: 0.875rem;
+      color: var(--subtext);
+      line-height: 1.6;
+    }
+
+    /* Community / Volunteering badges */
+    .about-community {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .community-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 212, 255, 0.07);
+      border: 1px solid rgba(0, 212, 255, 0.22);
+      border-radius: var(--radius-pill);
+      padding: 6px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-2);
+      font-weight: 500;
+      transition: all var(--transition);
+    }
+
+    .community-badge:hover {
+      background: rgba(0, 212, 255, 0.14);
+      transform: translateY(-2px);
+    }
+
+    .community-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 5px var(--accent-2);
+    }
+
+    /* ---- Right: Stats + Image ---- */
+    .about-stats-col {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Photo card */
+    .about-photo-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      aspect-ratio: 4/3;
+    }
+
+    .about-photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.5s ease;
+    }
+
+    .about-photo-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .about-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,15,30,0.7) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .about-photo-tag {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: rgba(10,15,30,0.85);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 5px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent-2);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Stat counter cards grid */
+    .about-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      text-align: center;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .stat-card:hover::before { opacity: 1; }
+
+    .stat-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(108,99,255,0.18);
+    }
+
+    .stat-card-icon {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .stat-card-value {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-card-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--subtext);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ---- About Responsive ---- */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .about-stats-col {
+        order: -1;
+      }
+
+      .about-photo-card {
+        max-height: 280px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     /* ============================================================
@@ -1067,7 +1324,119 @@
   <!-- ============================================================
        PLACEHOLDER SECTIONS (Tasks 2–6)
   ============================================================ -->
-  <section id="about"        class="section-placeholder">// About section — coming in Task 2</section>
+  <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
+  <section id="about" class="section" aria-label="About Jatin Karma">
+    <div class="container">
+
+      <!-- Section Header -->
+      <div class="section-header reveal">
+        <p class="section-label">// who I am</p>
+        <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+        <p class="section-subtitle">A passionate builder turning ML ideas into real, deployable systems.</p>
+      </div>
+
+      <!-- Two-column grid -->
+      <div class="about-grid">
+
+        <!-- LEFT: Bio & highlights -->
+        <div class="about-text-col">
+
+          <p class="about-intro reveal">
+            I'm <strong>Jatin Karma</strong>, a first-year <strong>B.Tech student in Computer Science
+            (AI &amp; ML Specialization)</strong> at Acropolis Institute of Technology and Research,
+            Indore (Sept 2024 – June 2028). I maintain a <strong>CGPA of 8.48</strong> and love
+            building systems that bridge the gap between research and real-world impact.
+          </p>
+
+          <div class="about-highlight-cards">
+
+            <div class="about-highlight-card reveal">
+              <div class="about-highlight-icon" aria-hidden="true">🚀</div>
+              <div class="about-highlight-body">
+                <div class="about-highlight-title">What Drives Me</div>
+                <div class="about-highlight-desc">
+                  Building <strong>end-to-end ML pipelines</strong> — from raw data and EDA all the
+                  way through model training, optimization, and <strong>FastAPI deployment</strong>.
+                  Notebooks are just the starting point.
+                </div>
+              </div>
+            </div>
+
+            <div class="about-highlight-card reveal">
+              <div class="about-highlight-icon" aria-hidden="true">🧠</div>
+              <div class="about-highlight-body">
+                <div class="about-highlight-title">Currently Exploring</div>
+                <div class="about-highlight-desc">
+                  Deepening my <strong>DSA skills</strong> (arrays, trees, graphs, DP) on competitive
+                  platforms, and experimenting with <strong>Agentic AI systems</strong> using
+                  Agent Development Kit (ADK).
+                </div>
+              </div>
+            </div>
+
+            <div class="about-highlight-card reveal">
+              <div class="about-highlight-icon" aria-hidden="true">🤝</div>
+              <div class="about-highlight-body">
+                <div class="about-highlight-title">Community &amp; Volunteering</div>
+                <div class="about-highlight-desc" style="margin-bottom:12px">
+                  Actively giving back through technical communities and events.
+                </div>
+                <div class="about-community">
+                  <span class="community-badge"><span class="community-badge-dot"></span>IEEE Volunteer — ICIH 2025</span>
+                  <span class="community-badge"><span class="community-badge-dot"></span>IIC Regional Meet 2025</span>
+                  <span class="community-badge"><span class="community-badge-dot"></span>Regular Hackathon Participant</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RIGHT: Photo + Stat counters -->
+        <div class="about-stats-col">
+
+          <!-- Photo card -->
+          <div class="about-photo-card reveal">
+            <img src="./myphoto.jpg" alt="Jatin Karma" />
+            <div class="about-photo-overlay" aria-hidden="true"></div>
+            <span class="about-photo-tag">📍 Indore, Madhya Pradesh, India</span>
+          </div>
+
+          <!-- Stat counters -->
+          <div class="about-stats-grid reveal">
+
+            <div class="stat-card">
+              <span class="stat-card-icon" aria-hidden="true">🎓</span>
+              <div class="stat-card-value" id="stat-cgpa">0</div>
+              <div class="stat-card-label">CGPA / 10.0</div>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-card-icon" aria-hidden="true">💻</span>
+              <div class="stat-card-value" id="stat-projects">0</div>
+              <div class="stat-card-label">Projects Built</div>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-card-icon" aria-hidden="true">📜</span>
+              <div class="stat-card-value" id="stat-certs">0</div>
+              <div class="stat-card-label">Certifications</div>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-card-icon" aria-hidden="true">🏅</span>
+              <div class="stat-card-value" id="stat-ieee">IEEE</div>
+              <div class="stat-card-label">Volunteer 2025</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
   <section id="skills"       class="section-placeholder">// Skills section — coming in Task 3</section>
   <section id="projects"     class="section-placeholder">// Projects section — coming in Task 4</section>
   <section id="achievements" class="section-placeholder">// Education &amp; Achievements — coming in Task 5</section>
@@ -1182,6 +1551,48 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ---- Animated Stat Counters ---- */
+    function animateCounter(id, target, decimals = 0, suffix = '') {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const duration = 1800;
+      const start = performance.now();
+      const from = 0;
+
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        // ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = from + (target - from) * eased;
+        el.textContent = decimals > 0
+          ? value.toFixed(decimals)
+          : Math.floor(value) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = decimals > 0 ? target.toFixed(decimals) : target + suffix;
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    // Trigger counters when About section enters viewport
+    let countersTriggered = false;
+    const aboutSection = document.getElementById('about');
+
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !countersTriggered) {
+          countersTriggered = true;
+          animateCounter('stat-cgpa',     8.48, 2);
+          animateCounter('stat-projects', 3,    0, '+');
+          animateCounter('stat-certs',    5,    0, '+');
+          // IEEE is text, no animation needed
+          counterObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    if (aboutSection) counterObserver.observe(aboutSection);
   </script>
 
 </body>
