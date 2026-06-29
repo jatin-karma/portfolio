@@ -1548,9 +1548,16 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.02 });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Bulletproof fallback: reveal all elements after 1.5s if observer didn't trigger
+    setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        el.classList.add('visible');
+      });
+    }, 1500);
 
     /* ---- Animated Stat Counters ---- */
     function animateCounter(id, target, decimals = 0, suffix = '') {
@@ -1590,7 +1597,7 @@
           counterObserver.disconnect();
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.1 });
 
     if (aboutSection) counterObserver.observe(aboutSection);
   </script>
