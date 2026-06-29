@@ -795,15 +795,22 @@ img {
 /* ============================================================
    SCROLL REVEAL (JS-controlled)
 ============================================================ */
+/* Elements are visible by default — JS adds .will-animate before observing */
 .reveal {
-  opacity: 0;
-  transform: translateY(32px);
   transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* JS adds this class so animation only runs when JS is active */
+.reveal.will-animate {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* Both visible class variants to be safe */
+.reveal.visible,
+.reveal.will-animate.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 /* ============================================================

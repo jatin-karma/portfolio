@@ -106,16 +106,27 @@ const revealObserver = new IntersectionObserver(entries => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.02 });
+}, { threshold: 0.02, rootMargin: '0px 0px -20px 0px' });
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+// Add will-animate ONLY if JS is running, then observe
+document.querySelectorAll('.reveal').forEach(el => {
+  el.classList.add('will-animate');
+  revealObserver.observe(el);
+});
 
-// Bulletproof fallback: reveal all elements after 1.5s if observer didn't trigger
+// Fast fallback: if observer hasn't fired within 150ms, reveal everything
 setTimeout(() => {
   document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
     el.classList.add('visible');
   });
-}, 1500);
+}, 150);
+
+// Secondary safety net at 600ms
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+    el.classList.add('visible');
+  });
+}, 600);
 
 /* ---- Animated Stat Counters ---- */
 function animateCounter(id, target, decimals = 0, suffix = '') {
