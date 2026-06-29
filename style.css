@@ -25,6 +25,24 @@
   --nav-h:        70px;
 }
 
+/* Light Mode Overrides */
+body.light-mode {
+  --bg:           #F8FAFC;
+  --bg-card:      #FFFFFF;
+  --bg-card-alt:  #F1F5F9;
+  --accent:       #4F46E5; /* Indigo-600 */
+  --accent-2:     #0284C7; /* Sky-600 */
+  --accent-glow:  rgba(79, 70, 229, 0.15);
+  --accent-2-glow:rgba(2, 132, 199, 0.12);
+  --text:         #0F172A; /* Slate-900 */
+  --subtext:      #475569; /* Slate-600 */
+  --border:       rgba(79, 70, 229, 0.12);
+  --border-hover: rgba(79, 70, 229, 0.35);
+  --shadow:       0 4px 20px rgba(15, 23, 42, 0.05);
+  --shadow-accent:0 8px 24px rgba(79, 70, 229, 0.12);
+}
+
+
 /* ============================================================
    CSS RESET & BASE
 ============================================================ */
@@ -1248,6 +1266,7 @@ img {
   padding-top: 16px;
   display: flex;
   justify-content: flex-end;
+  gap: 16px;
 }
 
 .btn-github {
@@ -1807,3 +1826,104 @@ img {
     justify-content: center;
   }
 }
+
+/* ============================================================
+   THEME TOGGLE & LIGHT MODE UI ADAPTATIONS
+============================================================ */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.theme-toggle-btn {
+  background: rgba(108, 99, 255, 0.08);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(108, 99, 255, 0.15);
+  transform: scale(1.05) rotate(15deg);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.theme-toggle-btn svg {
+  transition: transform 0.4s ease;
+}
+
+/* Light mode specific element adaptations */
+body.light-mode {
+  background-color: var(--bg);
+}
+
+body.light-mode .bg-grid {
+  background-image:
+    linear-gradient(rgba(79, 70, 229, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 70, 229, 0.03) 1px, transparent 1px);
+}
+
+body.light-mode .bg-orb {
+  opacity: 0.08;
+}
+
+body.light-mode #navbar.scrolled {
+  background: rgba(248, 250, 252, 0.88);
+}
+
+body.light-mode .mobile-menu {
+  background: rgba(248, 250, 252, 0.97);
+}
+
+body.light-mode .avatar-status {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(79, 70, 229, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .avatar-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(79, 70, 229, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .social-link {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+body.light-mode .social-link:hover {
+  background: rgba(79, 70, 229, 0.08);
+  border-color: var(--accent);
+}
+
+body.light-mode .about-highlight-card,
+body.light-mode .skills-category,
+body.light-mode .project-card,
+body.light-mode .gallery-item,
+body.light-mode .contact-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+body.light-mode .about-highlight-card:hover,
+body.light-mode .skills-category:hover,
+body.light-mode .project-card:hover,
+body.light-mode .gallery-item:hover,
+body.light-mode .contact-card:hover {
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.1);
+}
+
+body.light-mode #footer {
+  background: #F1F5F9;
+}
+

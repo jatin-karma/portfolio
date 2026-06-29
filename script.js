@@ -278,3 +278,38 @@ if (lightboxModal) {
     }
   });
 }
+
+/* ---- Dark / Light Mode Toggle ---- */
+const themeToggleBtn = document.getElementById('theme-toggle');
+const sunIcon = themeToggleBtn ? themeToggleBtn.querySelector('.sun-icon') : null;
+const moonIcon = themeToggleBtn ? themeToggleBtn.querySelector('.moon-icon') : null;
+
+// Check stored preference
+const savedTheme = localStorage.getItem('theme');
+// Default to dark theme
+const isDarkMode = savedTheme ? savedTheme === 'dark' : true;
+
+function setTheme(dark) {
+  if (dark) {
+    document.body.classList.remove('light-mode');
+    localStorage.setItem('theme', 'dark');
+    if (sunIcon) sunIcon.style.display = 'block';
+    if (moonIcon) moonIcon.style.display = 'none';
+  } else {
+    document.body.classList.add('light-mode');
+    localStorage.setItem('theme', 'light');
+    if (sunIcon) sunIcon.style.display = 'none';
+    if (moonIcon) moonIcon.style.display = 'block';
+  }
+}
+
+// Initialize theme
+setTheme(isDarkMode);
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    const currentIsLight = document.body.classList.contains('light-mode');
+    setTheme(currentIsLight); // Switch to opposite
+  });
+}
+
